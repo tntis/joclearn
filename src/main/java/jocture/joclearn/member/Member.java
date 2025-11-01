@@ -13,10 +13,22 @@ public class Member {
     private String passwordHash;
     private MemberStatus status;
 
-    public Member(String nickname, String email, String password) {
+    private Member(String nickname, String email, String password, MemberStatus status) {
         this.nickname = nickname;
         this.email = email;
         this.passwordHash = password;
-        this.status = MemberStatus.STANDBY;
+        this.status = status;
+    }
+
+    public static Member create(String nickname, String email, String password) {
+        return new Member(nickname, email, password, MemberStatus.STANDBY);
+    }
+
+    public void activate() {
+        this.status = MemberStatus.ACTIVE;
+    }
+
+    public void deactivate() {
+        this.status = MemberStatus.INACTIVE;
     }
 }
