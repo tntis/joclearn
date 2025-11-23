@@ -26,5 +26,4 @@ public record Nickname(String value) {
             throw new IllegalArgumentException("잘못된 닉네임 형식입니다.: " + nickname);
         }
     }
-
 }

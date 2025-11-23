@@ -15,6 +15,7 @@ public class Member {
      * 3. 부가 로직 때문에 도메인 객체인 Member의 핵심 로직이 잘 보이지 않을 수 있다.
      * - 이런 문제들을 어떻게 해결할 수 있을까?
      */
+
     private Nickname nickname;
     private Email email;
     private String passwordHash;
