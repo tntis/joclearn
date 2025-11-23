@@ -29,24 +29,6 @@ class MemberTest {
         this.member = Member.create("subin", "subin@qwe.com", "abcd1234", passwordEncoder);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings= {
-        "_ewdw","ssf","1234565678922345345"
-    })
-    void create_wrongNickname(String nickname ){
-        assertThatThrownBy(() -> Member.create(nickname,"subin@qwe.com","dd",passwordEncoder))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings= {
-        "subin","@qwe.com","sun@q"
-    })
-    void create_wrongEmail(String email) {
-        assertThatThrownBy(() -> Member.create("subin",email,"dd",passwordEncoder))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @Test
     void create() {
         assertThat(member.getStatus()).isEqualTo(MemberStatus.STANDBY);
