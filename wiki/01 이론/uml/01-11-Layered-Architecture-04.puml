@@ -1,0 +1,15 @@
+@startuml
+package "Presentation Layer" {
+}
+package "Application Layer" {
+}
+package "Domain Layer" {
+}
+package "Infrastructure Layer" {
+}
+
+"Presentation Layer" --> "Application Layer"
+"Application Layer" --> "Domain Layer"
+"Application Layer" --> "Infrastructure Layer"
+"Domain Layer" --> "Infrastructure Layer"
+@enduml

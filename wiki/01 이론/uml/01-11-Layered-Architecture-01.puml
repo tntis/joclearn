@@ -1,0 +1,11 @@
+@startuml
+package "Controller Layer" {
+}
+package "Service Layer" {
+}
+package "Repository Layer" {
+}
+
+"Controller Layer" --> "Service Layer"
+"Service Layer" --> "Repository Layer"
+@enduml
