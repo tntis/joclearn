@@ -20,10 +20,10 @@ configurations {
     }
 }
 
-subprojects{
-    apply ( plugin="java")
-    apply ( plugin="org.springframework.boot")
-    apply ( plugin="io.spring.dependency-management")
+subprojects {
+    apply(plugin = "java")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
 
     repositories {
         mavenCentral()
@@ -62,7 +62,6 @@ project(":modules:application"){
         implementation(project(":modules:domain"))
     }
 }
-
 
 project(":modules:domain"){
     dependencies{
