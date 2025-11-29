@@ -1,4 +1,4 @@
-package jocture.joclearn.member;
+package jocture.joclearn.domain.member;
 
 import java.util.regex.Pattern;
 

@@ -20,23 +20,57 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
+subprojects{
+    apply ( plugin="java")
+    apply ( plugin="org.springframework.boot")
+    apply ( plugin="io.spring.dependency-management")
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly("org.projectlombok:lombok")
+        annotationProcessor("org.projectlombok:lombok")
+
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
-    runtimeOnly("com.h2database:h2")
-
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
-
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+project(":modules:app-boot"){
+    dependencies{
+        implementation(project(":modules:presentation"))
+        implementation(project(":modules:application"))
+        implementation(project(":modules:domain"))
+        implementation(project(":modules:infra"))
+    }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+project(":modules:presentation"){
+    dependencies{
+        implementation(project(":modules:application"))
+    }
+}
+
+project(":modules:application"){
+    dependencies{
+        implementation(project(":modules:domain"))
+    }
+}
+
+
+project(":modules:domain"){
+    dependencies{
+    }
+}
+
+project(":modules:infra"){
+    dependencies{
+        implementation(project(":modules:domain"))
+    }
 }

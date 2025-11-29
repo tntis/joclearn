@@ -1,6 +1,5 @@
-package jocture.joclearn.member;
+package jocture.joclearn.domain.member;
 
-import java.util.regex.Pattern;
 import lombok.Getter;
 
 //객체 불변성을 위해 필드에 private final을 선언하는게 좋다.
