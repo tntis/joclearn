@@ -24,12 +24,25 @@ public class Member {
      * 3. 부가 로직 때문에 도메인 객체인 Member의 핵심 로직이 잘 보이지 않을 수 있다.
      * - 이런 문제들을 어떻게 해결할 수 있을까?
      */
-    @Column(name = "nickname")
+
+    /*
+      VO 에는 컬럼이 한개라는 보장이 없기때문에 사용하고 여러개일경우에는 array로
+      @Embedded
+       @AttributeOverrides({
+        @AttributeOverride(name= "value",column =  @Column(name = "nickname"))
+        @AttributeOverride(name= "value2",column =  @Column(name = "nickname2"))
+      })
+     */
+    @Embedded
+    @AttributeOverride(name= "value",column =  @Column(name = "nickname"))
     private Nickname nickname;
-    @Column(name = "email")
+    
+    @AttributeOverride(name= "value",column =  @Column(name = "email"))
     private Email email;
+    
     @Column(name = "password_hash")
     private String passwordHash;
+    
     @Column(name = "member_status")
     private MemberStatus status;
 

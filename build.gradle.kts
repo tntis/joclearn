@@ -60,6 +60,8 @@ project(":modules:presentation"){
 project(":modules:application"){
     dependencies{
         implementation(project(":modules:domain"))
+
+        testImplementation(project(":modules:app-boot"))
     }
 }
 
