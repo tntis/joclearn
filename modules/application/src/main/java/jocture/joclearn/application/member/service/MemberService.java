@@ -2,10 +2,19 @@ package jocture.joclearn.application.member.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import jocture.joclearn.application.member.data.dto.MemberJoinRequest;
+import jocture.joclearn.domain.member.Member;
+import jocture.joclearn.domain.member.MemberRepository;
+import jocture.joclearn.domain.member.PasswordEncoder;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class MemberService implements MemberWriter, MemberReader {
+
+    private final PasswordEncoder passwordEncoder;
+    private final MemberRepository memberRepository;
 
     @Override
     public void getMembers() {
@@ -19,7 +28,9 @@ public class MemberService implements MemberWriter, MemberReader {
 
     @Override
     @Transactional
-    public void joinMember() {
+    public Member joinMember(MemberJoinRequest request) {
+        Member member = request.toEntity(passwordEncoder);
+        return memberRepository.save(member);
 
     }
 
