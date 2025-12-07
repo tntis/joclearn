@@ -36,13 +36,13 @@ public class Member {
     @Embedded
     @AttributeOverride(name= "value",column =  @Column(name = "nickname"))
     private Nickname nickname;
-    
+
     @AttributeOverride(name= "value",column =  @Column(name = "email"))
     private Email email;
-    
+
     @Column(name = "password_hash")
     private String passwordHash;
-    
+
     @Column(name = "member_status")
     private MemberStatus status;
 
