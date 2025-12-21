@@ -3,6 +3,7 @@ package jocture.joclearn.application.member.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import jocture.joclearn.application.member.data.dto.MemberJoinRequest;
+import jocture.joclearn.domain.common.exception.NotFoundException;
 import jocture.joclearn.domain.member.Member;
 import jocture.joclearn.domain.member.MemberRepository;
 import jocture.joclearn.domain.member.PasswordEncoder;
@@ -22,8 +23,9 @@ public class MemberService implements MemberReader, MemberWriter {
     }
 
     @Override
-    public void getMember() {
-
+    public Member getMember(int memberId) {
+        return memberRepository.findById(memberId)
+            .orElseThrow(() -> new NotFoundException("회원을 찾을 수 없습니다.:" + memberId));
     }
 
     @Override
