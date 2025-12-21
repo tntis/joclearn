@@ -1,0 +1,34 @@
+@startuml
+top to bottom direction
+
+node "Application 레이어" {
+  [application:main]
+  [application:test]
+
+  [application:main] <-- [application:test]
+}
+
+node "Domain 레이어" {
+  [domain:main]
+  [domain:test]
+
+  [domain:main] <-- [domain:test]
+}
+
+node "Infra 레이어" {
+  [infra:main]
+  [infra:testFixtures]
+  [infra:test]
+
+  [infra:main] <-- [infra:test]
+  [infra:main] <-- [infra:testFixtures]
+  [infra:testFixtures] <-- [infra:test]
+}
+
+[application:main] ==> [domain:main]
+[infra:main] ==> [domain:main]
+
+[application:test] ..> [infra:testFixtures] : testImpl..(testFixtures(":infra"))
+[domain:test] ..> [infra:testFixtures] : testImpl..(testFixtures(":infra"))
+[infra:testFixtures] ..> [domain:main] : testFixturesImpl..(":domain")
+@enduml
