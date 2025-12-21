@@ -1,3 +1,16 @@
 spring:
   application:
     name: joclearn
+
+logging:
+  level:
+    org.springframework:
+      transaction: trace
+      orm: debug
+    org.hibernate:
+      SQL: debug
+      #orm.jdbc.bind: trace
+      #orm.jdbc.extract: trace
+      orm.jdbc:
+        bind: trace
+        extract: trace
