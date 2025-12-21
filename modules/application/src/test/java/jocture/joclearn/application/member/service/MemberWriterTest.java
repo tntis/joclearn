@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 //@Commit
 //@Rollback(false)
+// jpa 의 기본은 쓰기지연 (Write-Behind Buffer) flush
 @Import(InfraTestConfig.class)
 class MemberWriterTest {
 
