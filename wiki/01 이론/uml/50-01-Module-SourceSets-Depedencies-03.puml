@@ -1,0 +1,22 @@
+@startuml
+top to bottom direction
+
+node "Application 레이어" {
+  [application:main]
+  [application:test]
+
+  [application:main] <-- [application:test]
+}
+
+node "Domain 레이어" {
+  [domain:main]
+  [domain:test]
+  [domain:testFixtures]
+
+  [domain:main] <-- [domain:test]
+  [domain:main] <-- [domain:testFixtures]
+  [domain:testFixtures] <-- [domain:test]
+}
+
+[application:main] ==> [domain:main]
+@enduml

@@ -65,6 +65,7 @@ project(":modules:application") {
         implementation(project(":modules:domain"))
 
         testImplementation(project(":modules:app-boot"))
+        testImplementation(testFixtures(project(":modules:domain")))
         testImplementation(testFixtures(project(":modules:infra")))
     }
 }
@@ -72,6 +73,8 @@ project(":modules:application") {
 project(":modules:domain") {
     dependencies {
         testImplementation(testFixtures(project(":modules:infra")))
+
+        testFixturesImplementation(testFixtures(project(":modules:infra")))
     }
 }
 
