@@ -21,6 +21,17 @@ configurations {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter")
+
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
+}
+
 subprojects {
     apply(plugin = "java")
     apply(plugin = "org.springframework.boot")
